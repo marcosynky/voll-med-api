@@ -17,6 +17,7 @@ public record DadosCadastroPaciente(
         String email,  // E-mail do paciente
 
         @NotBlank  // Garante que o campo 'telefone' não seja vazio
+        @Pattern(regexp = "^\\(?\\d{2}\\)?\\s?9?\\d{4}\\-?\\d{4}$")  // Valida o formato do telefone (11 dígitos)
         String telefone,  // Telefone do paciente
 
         @NotBlank  // Garante que o campo 'cpf' não seja vazio
