@@ -7,7 +7,7 @@ import java.time.LocalDateTime; // Para trabalhar com data e hora
 
 // A interface MedicoRepository extends JpaRepository, permitindo o acesso a métodos padrão de persistência de dados
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
-
+// Anotação para consultas personalizadas em JPQL
     @Query("""
             select m from Medico m
             where
@@ -24,7 +24,7 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
             limit 1
         """)
     Medico escolherMedicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data);
-
+// Anotação para consultas personalizadas em JPQL
     @Query("""
             select m.ativo
             from Medico m

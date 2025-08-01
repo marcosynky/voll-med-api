@@ -56,8 +56,10 @@ public class ConsultaController {
     // Endpoint para gerar um relatório mensal de consultas
     @GetMapping("/relatorio-mensal/{mes}")
     public ResponseEntity<List<DadosRelatorioConsultaMensal>> gerarRelatorioConsultaMensal(@PathVariable YearMonth mes) {
-        // Lógica para gerar o relatório de consultas do mês
-        // Exemplo de código comentado: var relatorio = consultaRepository.?
-        return ResponseEntity.ok(null); // Retorna null por enquanto, lógica do relatório ainda a ser implementada
+        LocalDateTime inicioMes = mes.atDay(1).atStartOfDay();
+        LocalDateTime fimMes = mes.atEndOfMonth().atTime(23, 59, 59);
+        List<DadosRelatorioConsultaMensal> relatorio = consultaRepository.gerarRelatorioConsultaMensal(inicioMes, fimMes);
+        return ResponseEntity.ok(relatorio);
     }
+
 }
